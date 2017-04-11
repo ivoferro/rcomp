@@ -17,7 +17,8 @@ ${EXEC}: ${OBJFILES}
 ${OBJFILES}: ${SOURCES} ${INCLUDES}
 
 start: ${EXEC}
-	./${EXEC}
+	@read -p "Server Address: " sv_addr; \
+	./${EXEC} $$sv_addr
 
 clean:
 	rm -f ${OBJFILES} ${EXEC}
