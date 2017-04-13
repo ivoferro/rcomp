@@ -61,10 +61,10 @@ int main(int argc, char **argv) {
     GETS(nick, BUFFER_SIZE);
     while(1) {
         FD_ZERO(&rfds);
-        FD_SET(0, &rfds);
+        FD_SET(STDIN_FILENO, &rfds);
         FD_SET(sock, &rfds);
         select(sock + 1, &rfds, NULL, NULL, NULL);
-        if(FD_ISSET(0, &rfds))
+        if(FD_ISSET(STDIN_FILENO, &rfds))
         {
             GETS(line, BUFFER_SIZE);
             if(!strcmp(line, "exit"))
